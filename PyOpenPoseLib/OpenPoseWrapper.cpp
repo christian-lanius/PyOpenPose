@@ -145,7 +145,6 @@ void OpenPoseWrapper::detectFace(const cv::Mat &rgb) {
         BOOST_THROW_EXCEPTION(std::runtime_error("Face network was not initialized."));
     }
     const auto poseKeypoints = membersPtr->poseExtractorCaffe.getPoseKeypoints();
-    //const auto faceRectsOP = membersPtr->faceDetector.detectFaces(poseKeypoints, 1.0f);
     const auto faceRectsOP = membersPtr->faceDetector.detectFaces(poseKeypoints);
 
     this->faceRects = cv::Mat(faceRectsOP.size(), 4, CV_32SC1, cv::Scalar(0));
@@ -182,7 +181,6 @@ void OpenPoseWrapper::detectHands(const cv::Mat &rgb) {
     }
 
     const auto poseKeypoints = membersPtr->poseExtractorCaffe.getPoseKeypoints();
-    //const auto handRectsOP = membersPtr->handDetector.detectHands(poseKeypoints, 1.0f);
     const auto handRectsOP = membersPtr->handDetector.detectHands(poseKeypoints);
 
     this->handRects= cv::Mat(handRectsOP.size(), 8, CV_32SC1, cv::Scalar(0));
